@@ -16,8 +16,7 @@ export default class FavoriteStar extends Component {
 
   constructor(props) {
     super(props)
-
-    this.state = {isFavorite: false}
+    this.state = {isFavorite: this.props.isFavorite}
   }
 
 

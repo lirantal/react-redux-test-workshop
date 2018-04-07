@@ -10,32 +10,46 @@ export default class GifModal extends React.Component {
   static propTypes = {
     selectedGif: PropTypes.object,
     isFavorite: PropTypes.bool,
-    setFavoriteGif: PropTypes.func
+    setFavoriteGif: PropTypes.func,
+    onRequestClose: PropTypes.func,
+    modalIsOpen: PropTypes.bool
   }
 
-  handleFavorites = (isFavorite) => {
-    if (this.props.setFavoriteGif) {
-      this.props.setFavoriteGif(this.props.selectedGif, isFavorite)
+  handleFavoriteChange = (isFavorite) => {
+    const {setFavoriteGif, selectedGif} = this.props
+    if (setFavoriteGif) {
+      setFavoriteGif(selectedGif, isFavorite)
+    }
+  }
+
+  onCloseModal = () => {
+    const {onRequestClose} = this.props
+    if (onRequestClose) {
+      return onRequestClose()
     }
   }
 
   render() {
+    const {selectedGif, isFavorite, modalIsOpen} = this.props
     if (!this.props.selectedGif) {
       return <div/>
     }
 
 
     return (
-      <Modal contentLabel='myLabel' className='gif-modal' overlayClassName='modal-overlay'
-             isOpen={this.props.modalIsOpen}
-             onRequestClose={() => this.props.onRequestClose()}>
+
+      <Modal contentLabel='myLabel'
+             className='gif-modal'
+             overlayClassName='modal-overlay'
+             isOpen={modalIsOpen}
+             onRequestClose={this.onCloseModal}>
         <div>
-          <FavoriteStar isFavorite={this.props.isFavorite} onFavoriteChange={this.handleFavorites}/>
+          <FavoriteStar isFavorite={isFavorite} onFavoriteChange={this.handleFavoriteChange}/>
           <p><strong>Details</strong></p>
-          <img alt='' src={this.props.selectedGif.images.original.url}/>
+          <img alt='' src={(selectedGif) ? selectedGif.images.original.url : ''}/>
           <p><strong>Source:</strong> <a href={this.props.selectedGif.source}>{this.props.selectedGif.source}</a></p>
           <p><strong>Rating:</strong> {this.props.selectedGif.rating}</p>
-          <button onClick={() => this.props.onRequestClose()}>close</button>
+          <button className='closeModalBtn' onClick={this.onCloseModal}>close</button>
         </div>
       </Modal>
     )
