@@ -37,7 +37,7 @@ export default class FavoriteStar extends Component {
 
     let starClassName = (this.props.isFavorite) ? 'star-favorite' : 'star'
     return (
-      <div className={starClassName} onClick={this.handleClick}></div>
+      <div className={starClassName} onClick={this.handleClick}/>
     )
   }
 
