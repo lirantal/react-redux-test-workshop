@@ -41,17 +41,18 @@
     "tape": "^4.8.0"
   },
   "nyc": {
-    "statements": 95,
+    "statements": 90,
     "branches": 85,
-    "functions": 95,
-    "lines": 95,
+    "functions": 90,
+    "lines": 90,
     "reporter": [
       "text",
       "lcov",
       "text-summary"
     ],
     "exclude": [
-      "**/*.spec.js"
+      "**/*.spec.js",
+      "test/**/*.js"
     ],
     "cache": true
   }
