@@ -21,6 +21,9 @@ module.exports = function createDOM(isLogging) {
       url: 'http://api.giphy.com',
       done: function done(err, window) {
         if (err) return reject(err)
+        //add polyfill for window.fetch
+        window.fetch = require('whatwg-fetch').fetch
+
         global.window = window;
         global.document = window.document
         Object.keys(window).forEach((property) => {
@@ -28,6 +31,7 @@ module.exports = function createDOM(isLogging) {
             global[property] = window[property]
           }
         })
+
         return resolve(window)
       }
     })
