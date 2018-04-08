@@ -4,7 +4,9 @@ class SearchBar extends Component {
 
 
   onInputChange = (term) => {
-    this.props.onTermChange(term);
+    if (this.props.onTermChange) {
+      this.props.onTermChange(term)
+    }
   }
 
 

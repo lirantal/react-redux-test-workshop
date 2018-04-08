@@ -1,17 +1,17 @@
 const selectedGif = {
-  id: '123',
+  id: 1,
   images: {
     downsized: {
-      url: 'fakeDownsizedUrl'
+      url: 'http://fakeimg.pl/300/'
     },
     original: {
       url: 'fakeOriginalUrl'
     }
-  },
+  }
 }
 
 const favoritesMap = new Map()
-favoritesMap.set('123', selectedGif)
+favoritesMap.set(1, selectedGif)
 
 
 const gifsList = [{
@@ -19,14 +19,20 @@ const gifsList = [{
   images: {
     downsized: {
       url: 'http://fakeimg.pl/300/'
+    },
+    original: {
+      url: 'fakeOriginalUrl'
     }
   }
 },
   {
-    id: 1,
+    id: 2,
     images: {
       downsized: {
         url: 'http://fakeimg.pl/300/'
+      },
+      original: {
+        url: 'fakeOriginalUrl'
       }
     }
   },
@@ -35,6 +41,9 @@ const gifsList = [{
     images: {
       downsized: {
         url: 'http://fakeimg.pl/300/'
+      },
+      original: {
+        url: 'fakeOriginalUrl'
       }
     }
   }

@@ -19,7 +19,6 @@ ReactDOM.render(
     <Router history={history}>
       <Route path="/" component ={GifsSearchEngine}/>
       <Route path="favorites" component ={Favorites}/>
-      <GifsSearchEngine/>
     </Router>
   </Provider>,
   document.getElementById('app')

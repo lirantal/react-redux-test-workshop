@@ -3,15 +3,29 @@ import SearchBar from '../searchBar/SearchBar'
 import GifList from '../gifList/GifList'
 import GifModal from '../gifModal/GifModal'
 import {Link} from 'react-router'
+import PropTypes from 'prop-types'
 
 export default class GifsSearchEngine extends Component {
 
-  isFavoriteGif = () => {
-    if (!this.props.selectedGif) {
+  static propTypes = {
+    favoriteGifIdsMap: PropTypes.object,
+    gifs: PropTypes.arrayOf(PropTypes.object),
+    modalIsOpen:PropTypes.bool,
+    selectedGif: PropTypes.object,
+    actions: PropTypes.object
+  }
+
+  static defaultProps = {
+    favoriteGifIdsMap: new Map(),
+    gifs: []
+}
+
+  isFavoriteGif = (selectedGif, favoriteGifIdsMap, ) => {
+    if (!selectedGif || !favoriteGifIdsMap) {
       return false
     }
 
-    return (this.props.favoriteGifIdsMap.get(this.props.selectedGif.id) !== undefined)
+    return (favoriteGifIdsMap.get(selectedGif.id) !== undefined)
   }
 
   render() {
@@ -28,7 +42,7 @@ export default class GifsSearchEngine extends Component {
         <GifList gifs={this.props.gifs} onGifSelect={selectedGif => this.props.actions.openModal({selectedGif})}/>
         <GifModal modalIsOpen={this.props.modalIsOpen}
                   selectedGif={this.props.selectedGif}
-                  isFavorite={this.isFavoriteGif()}
+                  isFavorite={this.isFavoriteGif(this.props.selectedGif, this.props.favoriteGifIdsMap)}
                   setFavoriteGif={this.props.actions.setFavoriteGif}
                   onRequestClose={() => this.props.actions.closeModal()}/>
       </div>
