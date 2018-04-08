@@ -10,7 +10,7 @@ test('Test SET_FAVORITE_GIF action creator', t => {
       gif: {},
       isFavorite: true
     }
-    const actualAction = setFavoriteGif()
+    const actualAction = setFavoriteGif({}, true )
     t.deepEquals(actualAction, expectedAction, 'should create SET_FAVORITE_GIF action ')
 
   } catch (e) {

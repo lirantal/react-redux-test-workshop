@@ -64,5 +64,5 @@ const gifsList = [{
 ]
 
 export {
-  selectedGif, favoritesMap, gifsList
+  selectedGif, favoritesMap, gifsList, selectedGif2
 }
