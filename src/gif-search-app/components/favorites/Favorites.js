@@ -39,7 +39,7 @@ export default class Favorites extends Component {
       <div className="app">
         <div className="appTitle">My Favorites Gifs</div>
         <div className="goBack">
-          <Link to='/'>Go Back</Link>
+          <Link className="goBackLink" to='/'>Go Back</Link>
         </div>
         <GifList gifs={Array.from(favoriteGifIdsMap.values())}
                  onGifSelect={selectedGif => this.props.actions.openModal({selectedGif})}/>

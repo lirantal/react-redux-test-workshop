@@ -51,6 +51,7 @@ test('Integration Test: Check Routing', async t => {
     t.equal(favoritesView.length, 0, 'should NOT render Favorites View')
 
     const element = wrapper.find('a')
+    // see https://github.com/airbnb/enzyme/issues/516
     element.simulate('click', {button: 0})
 
     gifEngineView = wrapper.find(GifSearchEngineContainer)
