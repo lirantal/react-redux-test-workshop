@@ -33,7 +33,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
     "enzyme": "^2.9.1",
-    "jsdom": "^11.1.0",
+    "jsdom": "^11.7.0",
     "mock-css-modules": "^1.0.0",
     "nock": "^9.2.3",
     "nyc": "^11.6.0",

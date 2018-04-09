@@ -36,7 +36,7 @@ export default class GifsSearchEngine extends Component {
         <div className="searchFavoritesHolder">
           <SearchBar onTermChange={this.props.actions.requestGifs}/>
           <div className="favoriteLinkHolder">
-            <Link to='/favorites'>Show Favorites</Link>
+            <Link className='favoritesLink' to='/favorites'>Show Favorites</Link>
           </div>
         </div>
         <GifList gifs={this.props.gifs} onGifSelect={selectedGif => this.props.actions.openModal({selectedGif})}/>
